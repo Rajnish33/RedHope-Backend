@@ -56,7 +56,7 @@ async function start() {
     app.use("/camps", campRouter);
 
     app.listen(port, () =>
-      console.log(`Server running at http://localhost:${port}`)
+      console.log(`Server running at ${process.env.CLIENT_URL}`)
     );
   } catch (err) {
     console.error("MongoDB connection error:", err);
