@@ -15,7 +15,7 @@ router.post("/:handle", async (req, res) => {
 
     if (existingUser) {
       return res.status(400).json({
-        errorMessage: "An account with this email already exists.",
+        errorMessage: "An account with this mobile number already exists.",
       });
     }
 
