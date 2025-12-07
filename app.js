@@ -19,6 +19,7 @@ app.use(express.json());
 
 const allowedOrigins = [
     "http://localhost:3000",
+    "https://red-hope-frontend.vercel.app"
    
 ]
 
