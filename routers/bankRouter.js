@@ -94,28 +94,28 @@ router.get("/getStock", auth, async (req, res) => {
 // PUT - Update donation status
 router.put("/donations", auth, async (req, res) => {
   try {
-    await Donations.updateOne(
-      { _id: req.body.id },
-      { status: req.body.status }
-    );
+    const result = await Donations.findByIdAndUpdate(req.body.id, { status: req.body.status });
+    if (!result) {
+      return res.status(404).send("Donation not found");
+    }
     res.status(200).send("Status updated");
   } catch (err) {
     console.error(err);
-    res.status(404).send("Donation not found");
+    res.status(500).send("Server Error");
   }
 });
 
 // PUT - Update request status
 router.put("/requests", auth, async (req, res) => {
   try {
-    await Requests.updateOne(
-      { _id: req.body.id },
-      { status: req.body.status }
-    );
+    const result = await Requests.findByIdAndUpdate(req.body.id, { status: req.body.status });
+    if (!result) {
+      return res.status(404).send("Request not found");
+    }
     res.status(200).send("Status updated");
   } catch (err) {
     console.error(err);
-    res.status(404).send("Request not found");
+    res.status(500).send("Server Error");
   }
 });
 
